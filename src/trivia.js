@@ -52,6 +52,7 @@ app.controller('triviaController', [
 
 		$s.question = {};
 		$s.score = 0;
+		$s.displayText = "+2 for correct and -1 for incorrect";
 		var gameOver = false;
 
 		loadQuestion($s.questionChose);
