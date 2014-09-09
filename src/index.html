@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- for Bootstrap -->
+	<title>Trivia</title>
+	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="stylesheet" href="_inc/trivia.css">
+	<script src="_inc/angular.js"></script>
+</head>
+<body>
+	<div class="container" ng-app="triviaApp" ng-controller="triviaController">
+		<div class="row">
+			<section class="col-xs-12 question">
+				<table>
+					<thead><tr><th>{{question.title}}</th></tr></thead>
+					<tbody>
+						<tr ng-repeat="choice in question.choices">
+							<td ng-click="clickChoice($event)" class="thisChoice" data-question="{{question.id}}" data-choice="{{choice}}">
+								{{choice}}
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+		</div>
+		<div>
+			<h3>Score: {{score}}</h3>
+			<h3>{{displayText}}</h3>
+		</div>
+		<div class="row">
+			<section class="col-xs-12 form-inline" ng-hide="true">
+				<label>Question No. </label><select ng-model="questionChose" class="form-control" ng-options="singleQuestion.id for singleQuestion in availableQuestions" ng-change="chooseQuestion()"></select>
+			</section>
+		</div>
+	</div>
+	@@javascriptReplaceFiles
+</body>
+</html>
