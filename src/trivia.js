@@ -20,7 +20,7 @@ app.controller('triviaController', [
 		}
 
 		$s.clickChoice = function clickChoice(click) {
-			if(gameOver) return;
+			if(gameOver) { return; }
 			var $target = $(click.currentTarget);
 			var choice = $target.data('choice');
 			var result = checkAnswer(choice);
@@ -52,7 +52,7 @@ app.controller('triviaController', [
 
 		$s.question = {};
 		$s.score = 0;
-		$s.displayText = "+2 for correct and -1 for incorrect";
+		$s.displayText = '+2 for correct and -1 for incorrect';
 		var gameOver = false;
 
 		loadQuestion($s.questionChose);
