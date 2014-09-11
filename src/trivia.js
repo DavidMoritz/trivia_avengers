@@ -1,9 +1,27 @@
-var app = angular.module('triviaApp', []);
+var app = angular.module('triviaApp', ['firebase']);
 
 app.controller('triviaController', [
 	'$scope',
 	'QuestionFactory',
-	function triviaController($s, QuestionFactory) {
+	'$firebase',
+	function triviaController($s, QuestionFactory, $firebase) {
+
+		var fireRef = new Firebase('https://kewl.firebaseIO.com/');
+		$s.messages = $firebase(fireRef).$asArray();
+		if(!$s.messages.length) {
+			$s.messages.push({from: 'No', body: 'messages'});
+		}
+
+		$s.addMessage = function addMessage(e) {
+         //LISTEN FOR RETURN KEY
+         if (e.keyCode === 13 && $s.msg) {
+           //ALLOW CUSTOM OR ANONYMOUS USER NAMES
+           var name = $s.name || 'anonymous';
+           $s.messages.$add({from: name, body: $s.msg});
+           //RESET MESSAGE
+           $s.msg = '';
+         }
+		};
 
 		function loadQuestion() {
 			$s.questionChose.choices.push($s.questionChose.answer);
