@@ -30,7 +30,7 @@ module.exports = function(grunt) {
 					expand: true,
 					cwd: 'src/',
 					src: ['*.png'],
-					dest: '<%= distRoot %>/inc/'
+					dest: '<%= distRoot %>/_inc/'
 				}
 			]
 		},
@@ -79,7 +79,7 @@ module.exports = function(grunt) {
 					expand: true,
 					cwd: 'src/',
 					src: ['*.png'],
-					dest: '<%= distRoot %>/inc/'
+					dest: '<%= distRoot %>/_inc/'
 				}
 			]
 		}

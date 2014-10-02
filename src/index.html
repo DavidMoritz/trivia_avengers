@@ -5,10 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- for Bootstrap -->
 	<title>Trivia</title>
 	<link rel="shortcut icon" href="favicon.ico">
-	<script src="inc/angular.js"></script>
-	<script src='https://cdn.firebase.com/js/client/1.0.15/firebase.js'></script>
-	<script src='https://cdn.firebase.com/libs/angularfire/0.8.0/angularfire.min.js'></script>
-	<link rel="stylesheet" href="inc/trivia.css">
+	<link rel="stylesheet" href="_inc/trivia.css">
+	<script src="_inc/angular.js"></script>
 </head>
 <body>
 	<div class="container" ng-app="triviaApp" ng-controller="triviaController">
@@ -35,24 +33,6 @@
 				<label>Question No. </label><select ng-model="questionChose" class="form-control" ng-options="singleQuestion.id for singleQuestion in availableQuestions" ng-change="chooseQuestion()"></select>
 			</section>
 		</div>
-	</div>
-	<div class="firebase">
-		<div class='example-chat 1-demo-container'>
-			<header>Firebase Chat Demo</header>
-	      <div class='example-chat-toolbar'>
-	        <label for='nameInput'>Username:</label>
-	        <input ng-model='name' type='text' id='nameInput' placeholder='enter a username...'>
-	      </div>
-			<ul id='example-messages' class='example-chat-messages'>
-			  <li ng-repeat='textMsg in messages'>
-			    <strong class='example-chat-username'>{{textMsg.from}}</strong>
-			    {{textMsg.body}}
-			  </li>
-			</ul>
-	      <footer>
-	        <input ng-model='msg' ng-keydown="addMessage($event)" type='text' id='messageInput'  placeholder='Type a message...'>
-	      </footer>
-	   </div>
 	</div>
 	@@javascriptReplaceFiles
 </body>

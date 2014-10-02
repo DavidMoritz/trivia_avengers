@@ -1,27 +1,9 @@
-var app = angular.module('triviaApp', ['firebase']);
+var app = angular.module('triviaApp', []);
 
 app.controller('triviaController', [
 	'$scope',
 	'QuestionFactory',
-	'$firebase',
-	function triviaController($s, QuestionFactory, $firebase) {
-
-		var fireRef = new Firebase('https://kewl.firebaseIO.com/');
-		$s.messages = $firebase(fireRef).$asArray();
-		if(!$s.messages.length) {
-			$s.messages.push({from: 'No', body: 'messages'});
-		}
-
-		$s.addMessage = function addMessage(e) {
-         //LISTEN FOR RETURN KEY
-         if (e.keyCode === 13 && $s.msg) {
-           //ALLOW CUSTOM OR ANONYMOUS USER NAMES
-           var name = $s.name || 'anonymous';
-           $s.messages.$add({from: name, body: $s.msg});
-           //RESET MESSAGE
-           $s.msg = '';
-         }
-		};
+	function triviaController($s, QuestionFactory) {
 
 		function loadQuestion() {
 			$s.questionChose.choices.push($s.questionChose.answer);
